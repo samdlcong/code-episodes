@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>{{title}}</h1>
-    <ul v-for="(todo,index) in todos" :id="index">
+    <ul v-for="(todo,index) in todos" :id="index" class="todos">
       <li><label for="">{{index+1}}.{{todo.value}}</label></li>
     </ul>
   </div>
@@ -11,11 +11,8 @@
 </style>
 
 <script>
-import './assets/site.less';
 import './assets/todos.less';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn')
+import './assets/site.less';
 
 export default {
   name:'app',
