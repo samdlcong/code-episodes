@@ -1,14 +1,11 @@
 <!--/Me.vue-->
 <template>
-    <div>me</div>
+  <div>Me</div>
 </template>
 <style>
-
 </style>
 <script>
 export default {
-    
+  
 }
 </script>
-
-
