@@ -10,11 +10,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
+    // {
+    //   path: '/',
+    //   name: 'home',
+    //   component: Home
+    // },
     {
       path: '/home',
       name: 'Home',
@@ -34,6 +34,11 @@ export default new Router({
       path: '/me',
       name: 'Me',
       component: Me
+    },
+    {
+      path: '/category',
+      name: 'Category',
+      component: Explorer
     }
   ]
 })
