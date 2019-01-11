@@ -9,7 +9,7 @@
           </router-link>
          </li>
          <li>
-          <router-link :to="{name:'Explorer'}">
+          <router-link :to="{name:'Category'}">
             <div><img src="./assets/images/category.svg" alt=""></div>
             <div>分类</div>
           </router-link>
