@@ -4,25 +4,25 @@
       <ul>
         <li>
           <router-link :to="{name: 'Home'}" tag="div" active-class="active" exact>
-            <div><img src="../assets/images/home.svg" alt=""></div>
+            <div><img src="./assets/images/home.svg" alt=""></div>
             <div>首页</div>
           </router-link>
          </li>
          <li>
           <router-link :to="{name:'Category'}" tag="div" active-class="active">
-            <div><img src="../assets/images/category.svg" alt=""></div>
+            <div><img src="./assets/images/category.svg" alt=""></div>
             <div>分类</div>
           </router-link>
         </li>
         <li>
           <router-link :to="{name:'Cart'}" tag="div" active-class="active">
-            <div><img src="../assets/images/cart.svg" alt=""></div>
+            <div><img src="./assets/images/cart.svg" alt=""></div>
             <div>购物车</div>
           </router-link>
         </li>
         <li>
           <router-link :to="{name:'Me'}" tag="div" active-class="active">
-            <div><img src="../assets/images/me.svg" alt=""></div>
+            <div><img src="./assets/images/me.svg" alt=""></div>
             <div>我</div>
           </router-link>
         </li>

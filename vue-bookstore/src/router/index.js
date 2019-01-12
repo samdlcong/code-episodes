@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Cart from '@/components/Cart'
-import Category from '@/components/Category'
-import Me from '@/components/Me'
-import Main from '@/components/Main'
-import BookDetail from '@/components/BookDetail'
+import Home from '@/Home'
+import Cart from '@/Cart'
+import Category from '@/Category'
+import Me from '@/Me'
+import Main from '../MainContent'
+import BookDetail from '@/BookDetail'
 
 Vue.use(Router)
 
