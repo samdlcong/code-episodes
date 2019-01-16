@@ -15,7 +15,11 @@
                     </div>
                 </div> -->
                 <div class="swiper-pagination" ref="pagination"></div>
-               
+                <!-- <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div> -->
+
+    <!-- If we need scrollbar -->
+    <!-- <div class="swiper-scrollbar"></div> -->
                 <!-- 快讯 -->
                 <div class="announcement">
                     <label for="">快讯</label>
@@ -49,12 +53,20 @@ export default {
     },
     mounted() {
         new Swiper(this.$refs.slider, {
-                pagination: this.$refs.pagination,
-                paginationClickable: true,
-                spaceBetween: 30,
-                centeredSlides: true,
-                autoplay: 2500,
-                autoplayDisableOnInteraction: false
+                // pagination: this.$refs.pagination,
+                // paginationClickable: true,
+                // spaceBetween: 30,
+                // centeredSlides: true,
+                // loop:true,
+                // autoplay: 2500,
+                // autoplayDisableOnInteraction: false
+                autoplay: {
+                    delay: 5000,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    dynamicBullets: true,
+                },
         })
     }
 }
