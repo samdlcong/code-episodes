@@ -17,6 +17,10 @@
                 <div class="swiper-pagination" ref="pagination"></div>
                
                 <!-- 快讯 -->
+                <div class="announcement">
+                    <label for="">快讯</label>
+                    <span>{{ announcement }}</span>
+                </div>
             </div>
         </div>
         <div class="section">
@@ -36,6 +40,7 @@ import 'swiper/dist/css/swiper.css'
 export default {
     data(){
         return {
+            announcement: '今日上架图书全部8折',
             slides:[
                 {id:1, img_url:'/static/image/t1.svg'},
                 {id:2, img_url:'/static/image/t2.svg'}
