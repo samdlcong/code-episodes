@@ -9,22 +9,13 @@
                         <img :src="slide.img_url" alt="">
                     </div>
                 </div>
-                <!-- <div class="swiper-wrapper">
-                    <div class="swiper-slider">
-                        <img src="./fixtures/sliders/t2.svg" alt="">
-                    </div>
-                </div> -->
                 <div class="swiper-pagination" ref="pagination"></div>
-                <!-- <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div> -->
-
-    <!-- If we need scrollbar -->
-    <!-- <div class="swiper-scrollbar"></div> -->
-                <!-- 快讯 -->
-                <div class="announcement">
-                    <label for="">快讯</label>
-                    <span>{{ announcement }}</span>
-                </div>
+                
+            </div>
+            <!-- 快讯 -->
+            <div class="announcement">
+                <label for="">快讯</label>
+                <span>{{ announcement }}</span>
             </div>
         </div>
         <div class="section">
@@ -36,7 +27,26 @@
     </div>
 </template>
 <style>
+.announcement {
+        font-size: 12px;
+        padding:5px;
+        background:#fff;
+    }
 
+    .announcement > label {
+        padding: 3px 10px;
+        margin: 3px 10px;
+        background: #FACCB7;
+        border-radius: 3px;
+        color: #FF5102;
+
+    }
+
+    .announcement > span {
+        padding: 3px 10px;
+        color: #333;
+        display:inline-block;
+    }
 </style>
 <script>
 import Swiper from "swiper"
