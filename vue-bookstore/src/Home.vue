@@ -20,18 +20,21 @@
         </div>
         <div class="section">
             <!-- 新书上架 -->
-            <div class="book-list">
+            <book-list :books="latestUpdated" heading="最新更新">
+                
+            </book-list>
+            <!-- <div class="book-list">
                 <div class="header">
                     <div class="heading">最新更新</div>
                     <div class="more">更多...</div>
                 </div>
                 <div class="book-items">
-                    <div class="book">
-                        <div class="cover"><img src="/static/covers/1.svg" alt=""></div>
-                        <div class="title">揭开数据真相: 从小白到数据分析达人</div>
-                        <div class="authors">Edward Zaccaro, Daniel Zaccaro</div>
-                    </div>
-                    <div class="book">
+                    <div class="book" v-for="book in latestUpdated">
+                        <div class="cover"><img :src="book.img_url|fullUrl" alt=""></div>
+                        <div class="title">{{book.title}}</div>
+                        <div class="authors">{{book.authors|join}}</div>
+                    </div> -->
+                    <!-- <div class="book">
                         <div class="cover"><img src="/static/covers/2.svg" alt=""></div>
                         <div class="title">Android 高级进阶</div>
                         <div class="authors">顾浩鑫</div>
@@ -55,24 +58,27 @@
                         <div class="cover"><img src="/static/covers/6.svg" alt=""></div>
                         <div class="title">Kubernetes 权威指南：从 Docker 到 KUbernetes 实践全接触（第2版）</div>
                         <div class="authors">龚正,吴志辉,王伟,崔秀龙,闫键勇</div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div>
+            </div> -->
         </div>
         <div class="section">
             <!-- 编辑推荐 -->
-            <div class="book-list">
+            <book-list :books="recommended" heading="编辑推荐">
+
+            </book-list>
+            <!-- <div class="book-list">
                 <div class="header">
                     <div class="heading">编辑推荐</div>
                     <div class="more">更多...</div>
                 </div>
                 <div class="book-items">
-                    <div class="book">
-                        <div class="cover"><img src="/static/covers/1.svg" alt=""></div>
-                        <div class="title">自己动手做大数据系统</div>
-                        <div class="authors">张粤磊</div>
-                    </div>
-                    <div class="book">
+                    <div class="book" v-for="book in recommended">
+                        <div class="cover"><img :src="book.img_url|fullUrl" alt=""></div>
+                        <div class="title">{{book.title}}</div>
+                        <div class="authors">{{book.authors|join}}</div>
+                    </div> -->
+                    <!-- <div class="book">
                         <div class="cover"><img src="/static/covers/2.svg" alt=""></div>
                         <div class="title">智能硬件安全</div>
                         <div class="authors">刘健皓</div>
@@ -96,9 +102,9 @@
                         <div class="cover"><img src="/static/covers/6.svg" alt=""></div>
                         <div class="title">Kubernetes 权威指南：从 Docker 到 KUbernetes 实践全接触（第2版）</div>
                         <div class="authors">龚正,吴志辉,王伟,崔秀龙,闫键勇</div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -122,62 +128,12 @@
         padding: 3px 10px;
         color: #333;
         display:inline-block;
-    }
-    .book-list {
-  margin: 0 14px;
-  & > .header {
-    display: table;
-    width: 100%;
-    border-bottom: 1px solid #efefef;
+    }    
 
-    & > .heading {
-      display: table-cell;
-      padding: 12px;
-    }
-
-    & > .more {
-      display: table-cell;
-      text-align: right;
-      vertical-align: middle;
-      font-size: 10px;
-      color: #cccccc;
-      padding-right: 14px;
-    }
-  }
-
-  & .book-items {
-    display: table;
-    width: 100%;
-    padding-top: 12px;
-  }
-
-  & .book {
-    font-size: 10px;
-    text-align: center;
-    float: left;
-    width: 33%;
-    margin: 12px auto;
-    & .cover {
-    }
-
-    & .title, & .authors {
-      margin: 5px auto;
-      width: 100px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    & .authors {
-      color: #898989;
-      margin-top: 10px;
-      text-align: left;
-    }
-  }
-}
 </style>
 <script>
 import Swiper from "swiper"
+import BookList from "./components/BookList.vue"
 import 'swiper/dist/css/swiper.css'
 export default {
     data(){
@@ -186,27 +142,124 @@ export default {
             slides:[
                 {id:1, img_url:'/static/image/t1.svg'},
                 {id:2, img_url:'/static/image/t2.svg'}
+            ],
+            latestUpdated:[
+                {
+                    "id": 1,
+                    "title": "揭开数据真相：从小白到数据分析达人",
+                    "authors": [
+                        "Edward Zaccaro", "Daniel Zaccaro"
+                    ],
+                    "img_url": "1.svg"
+                },
+                {
+                    "id": 2,
+                    "title": "Android 高级进阶",
+                    "authors": [
+                        "顾浩鑫"
+                    ],
+                    "img_url": "2.svg"
+                },
+                {
+                    "id": 3,
+                    "title":"淘宝天猫电商运营与数据化选品完全手册",
+                    "authors":[
+                        "老夏"
+                    ],
+                    "img_url": "3.svg"
+                },
+                {
+                    "id": 4,
+                    "title":"大数据架构详解：从数据获取到深度学习",
+                    "authors":[
+                        "朱杰","罗华霖"
+                    ],
+                    "img_url": "4.svg"
+                },
+                {
+                    "id": 5,
+                    "title":"Meteor 全栈开发",
+                    "authors":[
+                        "杜亦舒"
+                    ],
+                    "img_url": "5.svg"
+                },
+                {
+                    "id": 6,
+                    "title":"Kubernetes 权威指南：从 Docker 到 Kubernetes 实践全接触（第2版）",
+                    "authors":[
+                        "龚正","吴志辉","王伟","崔秀龙","闫键勇"
+                    ],
+                    "img_url": "6.svg"
+                }
+            ],
+            recommended:[
+                {
+                    "id": 1,
+                    "title": "揭开数据真相：从小白到数据分析达人",
+                    "authors": [
+                        "Edward Zaccaro", "Daniel Zaccaro"
+                    ],
+                    "img_url": "1.svg"
+                },
+                {
+                    "id": 2,
+                    "title": "Android 高级进阶",
+                    "authors": [
+                        "顾浩鑫"
+                    ],
+                    "img_url": "2.svg"
+                },
+                {
+                    "id": 3,
+                    "title":"淘宝天猫电商运营与数据化选品完全手册",
+                    "authors":[
+                        "老夏"
+                    ],
+                    "img_url": "3.svg"
+                },
+                {
+                    "id": 4,
+                    "title":"大数据架构详解：从数据获取到深度学习",
+                    "authors":[
+                        "朱杰","罗华霖"
+                    ],
+                    "img_url": "4.svg"
+                },
+                {
+                    "id": 5,
+                    "title":"Meteor 全栈开发",
+                    "authors":[
+                        "杜亦舒"
+                    ],
+                    "img_url": "5.svg"
+                },
+                {
+                    "id": 6,
+                    "title":"Kubernetes 权威指南：从 Docker 到 Kubernetes 实践全接触（第2版）",
+                    "authors":[
+                        "龚正","吴志辉","王伟","崔秀龙","闫键勇"
+                    ],
+                    "img_url": "6.svg"
+                }
             ]
         }
     },
     mounted() {
         new Swiper(this.$refs.slider, {
-                // pagination: this.$refs.pagination,
-                // paginationClickable: true,
-                // spaceBetween: 30,
-                // centeredSlides: true,
-                // loop:true,
-                // autoplay: 2500,
-                // autoplayDisableOnInteraction: false
                 autoplay: {
-                    delay: 5000,
+                    delay: 2500,
                 },
                 pagination: {
                     el: '.swiper-pagination',
                     dynamicBullets: true,
                 },
         })
+    },
+    components:{
+        BookList
     }
+    
 }
 </script>
 <style>
