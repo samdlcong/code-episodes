@@ -21,13 +21,13 @@
         </div>
         <div class="section">
             <!-- 新书上架 -->
-            <book-list :books="latestUpdated" heading="最新更新">
+            <book-list :books="latestUpdated" heading="最新更新" @onBookSelect="preview($event)">
                 
             </book-list>
         </div>
         <div class="section">
             <!-- 编辑推荐 -->
-            <book-list :books="recommended" heading="编辑推荐">
+            <book-list :books="recommended" heading="编辑推荐" @onBookSelect="preview($event)">
 
             </book-list>
            
@@ -164,6 +164,11 @@ export default {
     components:{
         BookList,
         Announcement
+    },
+    methods:{
+        preview(book){
+            alert("显示图书"+book.title+"详情");
+        }
     }
     
 }
