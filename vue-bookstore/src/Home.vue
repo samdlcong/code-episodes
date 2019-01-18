@@ -32,6 +32,13 @@
             </book-list>
            
         </div>
+        <modal-dialog ref="dialog" @dialogClose="selected=undefined">
+            <div slot="header">
+                <div class="dismiss" @click.prevent="$refs.dialog.close()"></div>
+            </div>
+            <div></div>
+            <div>这个DIV将自动默认插槽的内容</div>
+        </modal-dialog>
     </div>
 </template>
 
@@ -39,6 +46,7 @@
 import Swiper from "swiper"
 import BookList from "./components/BookList.vue"
 import Announcement from "./components/Announcement.vue"
+import ModalDialog from "./components/dialog.vue"
 import 'swiper/dist/css/swiper.css'
 export default {
     data(){
@@ -163,11 +171,14 @@ export default {
     },
     components:{
         BookList,
-        Announcement
+        Announcement,
+        ModalDialog
     },
     methods:{
         preview(book){
             alert("显示图书"+book.title+"详情");
+            this.selected = book;
+            this.$refs.dialog.open()
         }
     }
     

@@ -23,11 +23,11 @@ export default new Router({
           name: 'Home',
           component: Home
         },
-        {
-          path: '/home',
-          name: 'Home',
-          component: Home
-        },
+        // {
+        //   path: '/home',
+        //   name: 'Home',
+        //   component: Home
+        // },
         {
           path: '/cart',
           name: 'Cart',
