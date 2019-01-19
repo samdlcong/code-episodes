@@ -32,14 +32,16 @@
             </book-list>
            
         </div>
+        <div>
         <modal-dialog ref="dialog" @dialogClose="selected=undefined">
-            <div slot="header">
-                <div class="dismiss" @click.prevent="$refs.dialog.close()"></div>
+            <div slot="heading">
+                <div class="dismiss" @click.prevent="$refs.dialog.close()">关闭</div>
             </div>
-            <div></div>
+            <!-- <div></div> -->
             <div>这个DIV将自动默认插槽的内容</div>
         </modal-dialog>
-    </div>
+        </div>
+    </div>    
 </template>
 
 <script>
@@ -47,115 +49,17 @@ import Swiper from "swiper"
 import BookList from "./components/BookList.vue"
 import Announcement from "./components/Announcement.vue"
 import ModalDialog from "./components/dialog.vue"
+import faker from "./fixtures/faker"
 import 'swiper/dist/css/swiper.css'
+const debug = process.env.NODE_ENV !== 'production';
+
 export default {
     data(){
         return {
             announcement: '今日上架图书全部8折',
-            slides:[
-                {id:1, img_url:'/static/image/t1.svg'},
-                {id:2, img_url:'/static/image/t2.svg'}
-            ],
-            latestUpdated:[
-                {
-                    "id": 1,
-                    "title": "揭开数据真相：从小白到数据分析达人",
-                    "authors": [
-                        "Edward Zaccaro", "Daniel Zaccaro"
-                    ],
-                    "img_url": "1.svg"
-                },
-                {
-                    "id": 2,
-                    "title": "Android 高级进阶",
-                    "authors": [
-                        "顾浩鑫"
-                    ],
-                    "img_url": "2.svg"
-                },
-                {
-                    "id": 3,
-                    "title":"淘宝天猫电商运营与数据化选品完全手册",
-                    "authors":[
-                        "老夏"
-                    ],
-                    "img_url": "3.svg"
-                },
-                {
-                    "id": 4,
-                    "title":"大数据架构详解：从数据获取到深度学习",
-                    "authors":[
-                        "朱杰","罗华霖"
-                    ],
-                    "img_url": "4.svg"
-                },
-                {
-                    "id": 5,
-                    "title":"Meteor 全栈开发",
-                    "authors":[
-                        "杜亦舒"
-                    ],
-                    "img_url": "5.svg"
-                },
-                {
-                    "id": 6,
-                    "title":"Kubernetes 权威指南：从 Docker 到 Kubernetes 实践全接触（第2版）",
-                    "authors":[
-                        "龚正","吴志辉","王伟","崔秀龙","闫键勇"
-                    ],
-                    "img_url": "6.svg"
-                }
-            ],
-            recommended:[
-                {
-                    "id": 1,
-                    "title": "揭开数据真相：从小白到数据分析达人",
-                    "authors": [
-                        "Edward Zaccaro", "Daniel Zaccaro"
-                    ],
-                    "img_url": "1.svg"
-                },
-                {
-                    "id": 2,
-                    "title": "Android 高级进阶",
-                    "authors": [
-                        "顾浩鑫"
-                    ],
-                    "img_url": "2.svg"
-                },
-                {
-                    "id": 3,
-                    "title":"淘宝天猫电商运营与数据化选品完全手册",
-                    "authors":[
-                        "老夏"
-                    ],
-                    "img_url": "3.svg"
-                },
-                {
-                    "id": 4,
-                    "title":"大数据架构详解：从数据获取到深度学习",
-                    "authors":[
-                        "朱杰","罗华霖"
-                    ],
-                    "img_url": "4.svg"
-                },
-                {
-                    "id": 5,
-                    "title":"Meteor 全栈开发",
-                    "authors":[
-                        "杜亦舒"
-                    ],
-                    "img_url": "5.svg"
-                },
-                {
-                    "id": 6,
-                    "title":"Kubernetes 权威指南：从 Docker 到 Kubernetes 实践全接触（第2版）",
-                    "authors":[
-                        "龚正","吴志辉","王伟","崔秀龙","闫键勇"
-                    ],
-                    "img_url": "6.svg"
-                }
-            ]
+            slides:[],
+            latestUpdated:[],
+            recommended:[]
         }
     },
     mounted() {
@@ -179,6 +83,23 @@ export default {
             alert("显示图书"+book.title+"详情");
             this.selected = book;
             this.$refs.dialog.open()
+        }
+    },
+    created (){
+        if (debug) {
+            const fakeData = faker.getHomeData();
+            console.log(fakeData);
+            for (let prop in fakeData ){
+                this[prop] = fakeData[prop]
+            }
+        } else {
+            this.$http.get('/api/home').then((res)=>{
+                for (let prop in res.body) {
+                    this[prop] = res.body[prop]
+                }
+            },(error)=>{
+                console.log(`获取数据失败: ${error}`)
+            })
         }
     }
     

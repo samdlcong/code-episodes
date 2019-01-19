@@ -6,7 +6,7 @@
         </div>
         <div class="book-items">
             <div class="book" v-for="book in books" @click="$emit('onBookSelect',book)">
-                <div class="cover"><img :src="book.img_url|fullUrl" alt=""></div>
+                <div class="cover"><img :src="book.img_url" alt=""></div>
                 <div class="title">{{book.title}}</div>
                 <div class="authors">{{book.authors|join}}</div>
             </div>
@@ -24,9 +24,9 @@ export default {
         join(args) {
             return args.join(',');
         },
-        fullUrl(args){
-            return '/static/covers/'+ args;
-        }
+        // fullUrl(args){
+        //     return '/static/covers/'+ args;
+        // }
     }
 }
 </script>
