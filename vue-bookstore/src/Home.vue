@@ -56,7 +56,7 @@ const debug = process.env.NODE_ENV !== 'production';
 export default {
     data(){
         return {
-            announcement: '今日上架图书全部8折',
+            announcement: '',
             slides:[],
             latestUpdated:[],
             recommended:[]
