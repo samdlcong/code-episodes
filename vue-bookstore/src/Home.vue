@@ -56,10 +56,10 @@ const debug = process.env.NODE_ENV !== 'production';
 export default {
     data(){
         return {
-            announcement: '',
-            slides:[],
-            latestUpdated:[],
-            recommended:[]
+            announcement: this.$store.state.books.announcement,
+            slides:this.$store.state.books.slides,
+            latestUpdated:this.$store.state.books.latestUpdated,
+            recommended:this.$store.state.books.recommended
         }
     },
     mounted() {
@@ -85,23 +85,28 @@ export default {
             this.$refs.dialog.open()
         }
     },
-    created (){
-        if (debug) {
-            const fakeData = faker.getHomeData();
-            console.log(fakeData);
-            for (let prop in fakeData ){
-                this[prop] = fakeData[prop]
-            }
-        } else {
-            this.$http.get('/api/home').then((res)=>{
-                for (let prop in res.body) {
-                    this[prop] = res.body[prop]
-                }
-            },(error)=>{
-                console.log(`获取数据失败: ${error}`)
-            })
-        }
-    }
+    // created (){
+    //     if (debug) {
+    //         const fakeData = faker.getHomeData();
+    //         console.log(fakeData);
+    //         for (let prop in fakeData ){
+    //             this[prop] = fakeData[prop]
+    //         }
+    //     } else {
+    //         this.$http.get('/api/home').then((res)=>{
+    //             for (let prop in res.body) {
+    //                 this[prop] = res.body[prop]
+    //             }
+    //         },(error)=>{
+    //             console.log(`获取数据失败: ${error}`)
+    //         })
+    //     }
+    // }
+    // computed: {
+    //     announcement(){
+    //         return this.$store.state.books.announcement;
+    //     }
+    // }
     
 }
 </script>
