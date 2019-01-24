@@ -44,13 +44,14 @@
     </div>    
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 import Swiper from "swiper"
 import BookList from "./components/BookList.vue"
 import Announcement from "./components/Announcement.vue"
 import ModalDialog from "./components/dialog.vue"
 // import faker from "./fixtures/faker"
 import 'swiper/dist/css/swiper.css'
+import {mapGetters,mapActions} from 'vuex'
 const debug = process.env.NODE_ENV !== 'production';
 
 export default {
@@ -74,6 +75,7 @@ export default {
         this.$store.dispatch('slides');
         this.$store.dispatch('latestUpdated');
         this.$store.dispatch('recommended')
+        
     },
     components:{
         BookList,
@@ -105,6 +107,10 @@ export default {
     //     }
     // }
     computed: {
+        // ...mapGetters {
+        //     ['announcement', 'slides', 'latestUpdated', 'recommended']
+        // }
+        
         announcement(){
             return this.$store.getters.announcement
         },
