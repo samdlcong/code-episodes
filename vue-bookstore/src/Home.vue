@@ -49,17 +49,15 @@ import Swiper from "swiper"
 import BookList from "./components/BookList.vue"
 import Announcement from "./components/Announcement.vue"
 import ModalDialog from "./components/dialog.vue"
-import faker from "./fixtures/faker"
+// import faker from "./fixtures/faker"
 import 'swiper/dist/css/swiper.css'
 const debug = process.env.NODE_ENV !== 'production';
 
 export default {
     data(){
         return {
-            announcement: this.$store.state.books.announcement,
-            slides:this.$store.state.books.slides,
-            latestUpdated:this.$store.state.books.latestUpdated,
-            recommended:this.$store.state.books.recommended
+            // announcement:this.$store.getters.announcement,
+            
         }
     },
     mounted() {
@@ -72,6 +70,10 @@ export default {
                     dynamicBullets: true,
                 },
         })
+        this.$store.dispatch('announcement','测试测试');
+        this.$store.dispatch('slides');
+        this.$store.dispatch('latestUpdated');
+        this.$store.dispatch('recommended')
     },
     components:{
         BookList,
@@ -102,11 +104,26 @@ export default {
     //         })
     //     }
     // }
-    // computed: {
-    //     announcement(){
-    //         return this.$store.state.books.announcement;
-    //     }
-    // }
+    computed: {
+        announcement(){
+            return this.$store.getters.announcement
+        },
+
+        slides(){
+            return this.$store.getters.slides
+        },
+
+        latestUpdated() {
+            return this.$store.getters.latestUpdated
+        },
+
+        recommended() {
+            return this.$store.getters.recommended
+        }
+       
+    },
+
+    
     
 }
 </script>
