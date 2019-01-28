@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import UIkit from './uikit'
-import VueResource from './vue-resource'
+import VueResource from 'vue-resource'
 
 
 Vue.use(UIkit)
